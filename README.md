@@ -3,34 +3,64 @@
 ![Language](https://img.shields.io/badge/Language-R-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-This repository contains the **R** implementation of non-parametric kernel density estimation methods, developed as part of my academic research.
+This repository contains **R** and **Python** implementations of nonparametric kernel density and regression estimation methods, developed as part of academic research.
 
-The main focus is on **adaptive bandwidth selection** using the **Goldenshluger-Lepski (GL) method**, specifically tailored for contexts where data is not independent and identically distributed (i.i.d.), but exhibits **weak dependence** (e.g., time series, stochastic processes).
+The main focus is on **adaptive density and regression estimation** using the **Goldenshluger-Lepski (GL) method**, specifically for data with **weak dependence** (e.g., time series or stochastic processes) where standard i.i.d. assumptions do not hold.
 
 ## 📋 Overview
 
-Standard methods for bandwidth selection (like Cross-Validation) often fail or perform poorly when the independence assumption is violated. This project implements theoretical estimators that ensure optimal convergence rates even under weak dependence conditions, without prior knowledge of the density's regularity.
+Classical bandwidth selection methods assume independence and that the smoothness of the density (regularity parameter $B$) is known, usually $B = 2$. In practice, we usually do not know the density function, and therefore we certainly do not know its derivatives. When these assumptions fail, classical methods should not be expected to perform well.
+
+This project contrasts classical density estimation for independent data with adaptive density and regression estimation for weakly dependent data, using the GL method. The approach constructs kernel estimators that belong to more general function classes, such as Hölder classes, where the optimal bandwidth does not depend on the unknown regularity $B$ and the estimator converges at nearly optimal rates.
 
 ## ✨ Key Features
 
-*   **Kernel Density Estimation (KDE):** Implementation of standard kernel estimators.
-*   **Adaptive Bandwidth Selection:** Full implementation of the Goldenshluger-Lepski (GL) algorithm.
-*   **Weak Dependence Handling:** Adjustments and simulations for time series data.
-*   **Visualization:** High-quality plots using `ggplot2` to illustrate:
-    *   The Bias-Variance tradeoff.
-    *   The "Anchor Point" effect in histograms vs. Kernels.
-    *   Convergence of adaptive estimators.
+* **Kernel Density Estimation (KDE):** Standard kernel-based density estimators.
+* **Adaptive Bandwidth Selection:** Implementations and experiments with the Goldenshluger-Lepski algorithm.
+* **Weak Dependence:** Simulations and examples for dependent time series models.
+* **Visualization:** Plots comparing estimators, bandwidth choices, and kernel effects.
 
 ## 🛠️ Prerequisites
 
-To run the scripts, you will need **R** installed along with the following packages:
+### R
+Install R and the required packages:
 
 ```r
-install.packages(c("ggplot2", "KernSmooth", "dplyr"))
+install.packages(c(
+  "ggplot2", "KernSmooth", "dplyr", "np", "forecast", "tseries"
+))
 ```
+
+### Python
+If you use the Python examples, create and activate a virtual environment:
+
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
 ## 📂 Repository Structure
-/scripts: R source codes for the estimators and GL method.
-/plots: Generated figures used in the thesis/paper.
-/simulations: Scripts to generate synthetic weakly dependent data (e.g., AR(1), MA(1) processes) for testing purposes.
+
+* `scripts/adaptive_estimation/`: Core adaptive estimation implementations and validation scripts.
+* `scripts/examples/`: Jupyter notebooks and reproducible examples.
+* `scripts/functions/`: Utility functions used across scripts.
+* `scripts/simulations/`: Synthetic data generation for AR, MA, and white noise models.
+* `scripts/plots/`: Generated figures and visualizations.
+
+## ▶️ Usage
+
+Run a script from the repository root, for example:
+
+```powershell
+Rscript scripts/adaptive_estimation/validacion_completa_estimacion_adaptativa_densidad.R
+```
+
+Or open one of the notebook examples:
+
+```powershell
+jupyter notebook scripts/examples/histograma_estimador_densidad_python.ipynb
+```
+
 ## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This repository is licensed under the MIT License. See the `LICENSE` file for full terms.
