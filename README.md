@@ -43,7 +43,7 @@ pip install -r requirements.txt
 ## 📂 Repository Structure
 
 * `scripts/adaptive_estimation/`: Core adaptive estimation implementations and validation scripts.
-* `scripts/examples/`: Jupyter notebooks and reproducible examples.
+* `scripts/examples/`: Jupyter/R notebooks and reproducible examples.
 * `scripts/functions/`: Utility functions used across scripts.
 * `scripts/simulations/`: Synthetic data generation for AR, MA, and white noise models.
 * `scripts/plots/`: Generated figures and visualizations.
