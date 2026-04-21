@@ -27,7 +27,7 @@ Install R and the required packages:
 
 ```r
 install.packages(c(
-  "ggplot2", "KernSmooth", "dplyr", "np", "forecast", "tseries"
+  "ggplot2", "KernSmooth", "dplyr", "np", "forecast", "tseries", "latex2exp"
 ))
 ```
 
